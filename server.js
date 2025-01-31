@@ -1,11 +1,10 @@
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 3000;
+const http = require('http');
 
-app.get('/api', (req, res) => {
-    res.json({ message: 'Hello from Vercel API' });
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({ message: 'Hello from my API!' }));
 });
 
-app.listen(port, () => {
-    console.log(`API listening at http://localhost:${port}`);
+server.listen(3000, () => {
+  console.log('Server is running on port 3000');
 });
